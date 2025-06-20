@@ -1,0 +1,12 @@
+Following the assumptions for the application:
+	1. App handles receiving of TCP/IP telegrams.
+	2. Multiple servers are possible to be defined, which are running on separate threads.
+	3. Multiple clients can connect to each server, each connection is running on sepearate thread.
+	4. Received by TCP servers data are parsed into SQLite DB tables.
+	5. Web Socket Client is defined within app, so that notification about new data stored into DB, can be sent to Backend server.
+
+
+
+Dependencies:
+
+	
