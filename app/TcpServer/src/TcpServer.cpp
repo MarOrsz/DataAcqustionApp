@@ -3,7 +3,7 @@
 #include <thread>
 
 
-TcpServer::TcpServer(std::string port):m_listenSocket{INVALID_SOCKET}, m_addrInfoResult{nullptr}, m_port{port}
+TcpServer::TcpServer(std::string port, DataQueue& queue):m_listenSocket{INVALID_SOCKET}, m_addrInfoResult{nullptr}, m_port{port}, m_dataQueue{&queue}
 {
     m_clientSockets.push_back(SOCKET(INVALID_SOCKET));
     init();
@@ -97,10 +97,13 @@ void TcpServer::listening()
     }
 }
 
-void TcpServer::run(SOCKET newClientSocket)
+void TcpServer::processReceivedData()
 {
-    std::cout << "Polaczono z klientem" << std::endl;
-    
+
+}
+
+void TcpServer::run(SOCKET newClientSocket)
+{    
     char recvbuf[DEFAULT_BUFLEN];
     int iResult{0}, iSendResult{0};
     int recvbuflen{DEFAULT_BUFLEN};
@@ -109,6 +112,7 @@ void TcpServer::run(SOCKET newClientSocket)
             iResult = recv(newClientSocket, recvbuf, recvbuflen, 0);
             if (iResult > 0) {
 
+                m_dataQueue->push(std::string(recvbuf, iResult));
                 std::cout<< "String: " << std::string(recvbuf, iResult) << std::endl;
                 std::cout << "Liczba: " << atoi(recvbuf) << std::endl;
 

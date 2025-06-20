@@ -10,3 +10,5 @@ if(WIN32)
     target_compile_definitions(TcpServerLib PRIVATE TcpServerLib_EXPORTS)
     target_link_libraries(TcpServerLib PUBLIC Ws2_32)
 endif()
+
+target_link_libraries(TcpServerLib PUBLIC WebSocketClientLib DataQueueLib)

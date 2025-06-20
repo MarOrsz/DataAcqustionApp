@@ -6,12 +6,14 @@
 #include <vector>
 #include <string>
 
+#include "DataQueue.h"
+
 
 class TcpServer
 {
     public:
-        TcpServer() : TcpServer(DEFAULT_PORT) {};
-        TcpServer(std::string port);
+        TcpServer(DataQueue& queue) : TcpServer(DEFAULT_PORT, queue) {};
+        TcpServer(std::string port, DataQueue& queue);
         ~TcpServer();
 
         void serverListen();
@@ -22,6 +24,7 @@ class TcpServer
         SOCKET m_listenSocket;
         std::vector<SOCKET> m_clientSockets;
         struct addrinfo *m_addrInfoResult, m_hints;
+        DataQueue *m_dataQueue;
 
         void init();
         void getAddrInfo();
@@ -29,6 +32,7 @@ class TcpServer
         void bindSocket();
         void run(SOCKET newClientSocket);
         void listening();
+        virtual void processReceivedData();
 
         //helper methods
         void displayClientDetails(const sockaddr_in& clientAddress);

@@ -8,10 +8,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
 # ====== SUBDIRECTORIES ======
-
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/app/TcpServer)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/app/WebSocketClient)
-
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/app/DataQueue)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/app/DataProcessor)
 
 
 # ====== EXECUTABLE ======
@@ -20,6 +20,8 @@ add_executable(DataAcqusitionApp ${CMAKE_CURRENT_SOURCE_DIR}/app/main.cpp)
 # ====== LIBRARY LINK - INTERNAL ======
 target_link_libraries(DataAcqusitionApp 
                     PRIVATE TcpServerLib
-                    PRIVATE WebSocketClientLib)
+                    PRIVATE WebSocketClientLib
+                    PRIVATE DataQueueLib
+                    PRIVATE DataProcessorLib)
 
 # ====== LIBRARY LINK - EXTERNAL ======

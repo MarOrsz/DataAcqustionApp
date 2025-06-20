@@ -3,14 +3,24 @@
 
 #include "TcpServer.h"
 #include "WebSocketClient.h"
+#include "DataQueue.h"
+#include "DataProcessor.h"
+
+
+
 
 int main()
 {
-    TcpServer server1;
+    DataQueue dataQueue;
+
+    TcpServer server1(dataQueue);
     server1.serverListen();
 
-    WebSocketClient webSocketClient("localhost", "8000");
-    webSocketClient.sendAndReceive("Marcin");
+    DataProcessor processor(dataQueue);
+    processor.start();
+
+    // WebSocketClient webSocketClient("localhost", "8000");
+    // webSocketClient.sendAndReceive("Marcin");
     
     std::string command;
 

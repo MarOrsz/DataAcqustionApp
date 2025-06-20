@@ -1,0 +1,34 @@
+Obiekt 1 - Server TCP/IP
+
+Zadania:
+	Odbieranie połączeń z klientami TCP/IP
+	Odbieranie danych i ich zwracanie z informacjami, ma byc BUFOR, i Adres IP przysyłającego klienta
+
+
+
+
+Obiekt 2 - Klient WebSocket
+
+Zadania:
+	Połączenie z serwerem WebSocket - Backend fastAPI
+	Wysyłanie notyfikacji do serwera o nowych danych w DB
+
+
+
+
+
+Obiekt 3 - Klient DB
+
+Zadania: 
+	Połączenie z bazą danych.
+	
+
+
+
+Klient TCP
+    ↓
+[TCPServer]
+    ↓ (push)
+[DataQueue]
+    ↓ (pull)
+[DataProcessor]
