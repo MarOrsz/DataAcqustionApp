@@ -1,4 +1,4 @@
-Following the assumptions for the application:
+Following are the assumptions for the application:
 	1. App handles receiving of TCP/IP telegrams.
 	2. Multiple servers are possible to be defined, which are running on separate threads.
 	3. Multiple clients can connect to each server, each connection is running on sepearate thread.
