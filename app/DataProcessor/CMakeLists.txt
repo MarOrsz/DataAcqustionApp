@@ -6,4 +6,4 @@ add_library(DataProcessorLib STATIC
 target_include_directories(DataProcessorLib
                             PUBLIC inc)
 
-target_link_libraries(DataProcessorLib PUBLIC DataQueueLib)
+target_link_libraries(DataProcessorLib PUBLIC DataQueueLib DbStoreLib)

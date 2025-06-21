@@ -11,6 +11,7 @@ void DataProcessor::start()
         while (true) {
         std::string data = m_queue.pop();
         std::cout << "Przetwarzam dane: " << data << std::endl;
+        m_dbStore.store("measurements", "value", std::stof(data));
         }
     }).detach();
 }

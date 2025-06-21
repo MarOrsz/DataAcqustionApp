@@ -3,6 +3,7 @@
 
 
 #include "DataQueue.h"
+#include "DbStore.h"
 
 
 
@@ -13,5 +14,6 @@ public:
 
 private:
     DataQueue& m_queue;
+    DbStore m_dbStore;
 };
 

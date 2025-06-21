@@ -12,6 +12,8 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/app/TcpServer)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/app/WebSocketClient)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/app/DataQueue)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/app/DataProcessor)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/app/DbStore)
+
 
 
 # ====== EXECUTABLE ======
@@ -22,6 +24,7 @@ target_link_libraries(DataAcqusitionApp
                     PRIVATE TcpServerLib
                     PRIVATE WebSocketClientLib
                     PRIVATE DataQueueLib
-                    PRIVATE DataProcessorLib)
+                    PRIVATE DataProcessorLib
+                    PRIVATE DbStoreLib)
 
 # ====== LIBRARY LINK - EXTERNAL ======
